@@ -10,13 +10,13 @@
 
 html.theme-google {
   /* M3 uses surface tones instead of pure white/gray borders */
-  --m3-surface: #fdfbff;
+  --m3-surface: #F7F9FC;
   --m3-surface-container: #f0f4f8; /* Light blueish tint for sidebar/bg */
   --m3-primary-container: #d3e3fd;
   
   /* 布局背景色变量 */
-  --vben-layout-bg: #f0f4f9 !important;
-  --vben-content-bg: #fdfbff !important;
+  --vben-layout-bg: #ffffff !important;
+  --vben-content-bg: #F7F9FC !important;
   
   /* CRITICAL: Tailwind 使用的变量 (HSL 格式) */
   /* #1f1f1f (Dark Grey Header) = HSL(0, 0%, 12%) */
@@ -85,7 +85,7 @@ html.theme-google .vben-layout-sidebar {
   --menu-background-color: transparent !important;
   
   /* RADIUS: M3 uses full pill shape for menu items */
-  --menu-item-radius: 999px !important;
+  --menu-item-radius: 12px !important;
   
   /* SPACING: Make it not touch the edges */
   --menu-item-margin-x: 12px !important; 
@@ -105,7 +105,7 @@ html.theme-google .vben-sub-menu > div:first-child,
 html.theme-google .ant-menu-item, 
 html.theme-google .ant-menu-submenu-title {
   /* Transparent background on unselected items (M3 style) */
-  background-color: transparent !important; 
+  background-color: #EBEFF6 !important; 
   color: #1f1f1f !important;
   
   margin-inline: 12px !important;
@@ -192,7 +192,7 @@ html.theme-google .ant-select-selector:focus {
 
 /* Cards: Floating Elevated Surfaces */
 html.theme-google .ant-card {
-  border-radius: 20px !important;
+  border-radius: 12px !important;
   border: none !important;
   background-color: var(--m3-surface) !important;
   box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1) !important;

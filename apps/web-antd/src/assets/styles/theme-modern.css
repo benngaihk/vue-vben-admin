@@ -10,24 +10,23 @@ html.theme-modern {
   --modern-border-strong: #d4d4d8; /* Zinc-300 */
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   
-  /* 布局背景色变量 */
-  --vben-layout-bg: #f4f4f5 !important;
-  --vben-content-bg: #ffffff !important;
-  
+  --vben-layout-bg: #ffffff !important; /* The canvas behind everything */
+  --vben-content-bg: #ffffff !important; /* The content card background */
+
   /* CRITICAL: Tailwind 使用的变量 (HSL 格式) */
   /* #18181b (Zinc-900 Sidebar) = HSL(240, 6%, 10%) */
   /* #ffffff (White Header) = HSL(0, 0%, 100%) */
   /* #f4f4f5 (Zinc-100 Background) = HSL(240, 6%, 96%) */
   --header: 0 0% 100% !important;
   --sidebar: 218 28% 17% !important;
-  --layout: 240 6% 96% !important;
+  --layout: 0 0% 100% !important;
   --content: 0 0% 100% !important;
   
-  --background-deep: #f4f4f5 !important;
+  --background-deep: 0 0% 100% !important;
   
   --ant-layout-header-bg: #ffffff !important;
   --ant-layout-sider-bg: #18181b !important;
-  --ant-layout-body-bg: #f4f4f5 !important;
+  --ant-layout-body-bg: #ffffff !important;
 }
 
 html.theme-modern.dark {
@@ -177,36 +176,60 @@ html.theme-modern .vben-tabbar {
    Components: Technical Feel
    ============================================== */
 
-/* Buttons: Small radius, no shadow, crisp border */
+/* Buttons: Modern SaaS style with Indigo accent */
 html.theme-modern .ant-btn {
-  border-radius: 4px !important; /* Tighter radius */
+  border-radius: 6px !important; /* Modern radius per design spec */
   box-shadow: none !important;
   border: 1px solid var(--modern-border-strong) !important;
   font-weight: 500;
-  font-size: 13px; /* Slightly smaller, more technical */
+  font-size: 13px;
 }
 
 html.theme-modern .ant-btn-primary {
-  background-color: #18181b !important; /* Zinc-900 (Black) */
-  border-color: #18181b !important;
+  background-color: #6366F1 !important; /* Indigo - per design preview */
+  border-color: #6366F1 !important;
   color: white !important;
+  box-shadow: 0 1px 2px rgba(99, 102, 241, 0.5) !important;
 }
 html.theme-modern .ant-btn-primary:hover {
-  background-color: #27272a !important; /* Zinc-800 */
+  background-color: #4f46e5 !important; /* Darker Indigo on hover */
+  border-color: #4f46e5 !important;
 }
 
-/* Inputs: Minimalist */
+/* Secondary button */
+html.theme-modern .ant-btn-default {
+  background-color: transparent !important;
+  border-color: #e4e4e7 !important;
+  color: #18181b !important;
+}
+html.theme-modern .ant-btn-default:hover {
+  border-color: #6366F1 !important;
+  color: #6366F1 !important;
+}
+
+/* Ghost button */
+html.theme-modern .ant-btn-text,
+html.theme-modern .ant-btn-link {
+  color: #52525b !important;
+}
+html.theme-modern .ant-btn-text:hover,
+html.theme-modern .ant-btn-link:hover {
+  color: #6366F1 !important;
+}
+
+/* Inputs: Minimalist with Indigo focus */
 html.theme-modern .ant-input,
 html.theme-modern .ant-input-affix-wrapper,
 html.theme-modern .ant-select-selector {
-  border-radius: 4px !important;
+  border-radius: 6px !important;
   border-color: var(--modern-border) !important;
   box-shadow: none !important;
 }
 html.theme-modern .ant-input:focus,
-html.theme-modern .ant-input-affix-wrapper:focus-within {
-  border-color: #52525b !important; /* Zinc-600 */
-  box-shadow: 0 0 0 2px rgba(63, 63, 70, 0.1) !important;
+html.theme-modern .ant-input-affix-wrapper:focus-within,
+html.theme-modern .ant-select-focused .ant-select-selector {
+  border-color: #6366F1 !important; /* Indigo focus */
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2) !important;
 }
 
 /* Cards: Outline only, no shadow */

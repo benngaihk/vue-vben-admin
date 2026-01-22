@@ -62,7 +62,7 @@ export const themePresets = {
         height: 64, // Standard M3 Top App Bar height
       },
       theme: {
-        radius: '1.0', // 16px (M3 Large rounded)
+        radius: '0.75', // 12px
         semiDarkSidebar: false, // CSS handles the surface color, avoid JS forcing contrast
         semiDarkHeader: true,   // Keep this to ensure text contrast logic works for the dark header
         colorPrimary: '#0b57d0', // M3 Blue
