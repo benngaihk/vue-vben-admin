@@ -53,35 +53,35 @@
     .layout-header .nav-items { display: flex; gap: 6px; flex: 1; }
     .layout-header .nav-item { height: 8px; border-radius: 2px; width: 40px; }
 
-    /* Google Layout Colors */
-    .layout-google-light .layout-header { background: #1c1b1f; }
-    .layout-google-light .layout-header .logo { background: #4285F4; }
+    /* Google Layout Colors - Blue Tonal Palette (与 theme-google.css 保持一致) */
+    .layout-google-light .layout-header { background: #1f1f1f; }  /* 深灰色 Header */
+    .layout-google-light .layout-header .logo { background: #4285F4; }  /* Google Blue */
     .layout-google-light .layout-header .nav-items .nav-item { background: rgba(255,255,255,0.2); }
     .layout-google-light .layout-header .widgets .widget { background: rgba(255,255,255,0.3); }
-    .layout-google-light .layout-sidebar { background: #f7f2fa; }
-    .layout-google-light .layout-sidebar .nav-icon { background: #e7e0ec; }
-    .layout-google-light .layout-sidebar .nav-icon.active { background: #4285F4; }
-    .layout-google-light .layout-content { background: #fffbfe; }
-    .layout-google-light .layout-breadcrumb span { background: #e7e0ec; }
-    .layout-google-light .layout-card { background: #f7f2fa; border-radius: 12px; }
-    .layout-google-light .layout-card-line { background: #e7e0ec; }
-    .layout-google-light .layout-card-btn { background: #4285F4; border-radius: 20px; }
-    .layout-google-light .layout-footer { background: #f7f2fa; }
-    .layout-google-light .layout-footer span { background: #e7e0ec; }
+    .layout-google-light .layout-sidebar { background: #f0f4f9; }  /* M3 蓝色调 Surface */
+    .layout-google-light .layout-sidebar .nav-icon { background: #e0e6ed; }  /* 蓝灰色 */
+    .layout-google-light .layout-sidebar .nav-icon.active { background: #c2e7ff; }  /* M3 Primary Container */
+    .layout-google-light .layout-content { background: #fdfbff; }  /* 冷白 */
+    .layout-google-light .layout-breadcrumb span { background: #e0e6ed; }
+    .layout-google-light .layout-card { background: #f7f9fc; border-radius: 20px; }  /* M3 大圆角卡片 */
+    .layout-google-light .layout-card-line { background: #e0e6ed; }
+    .layout-google-light .layout-card-btn { background: #0b57d0; border-radius: 20px; }  /* M3 蓝色 */
+    .layout-google-light .layout-footer { background: #f0f4f9; }
+    .layout-google-light .layout-footer span { background: #e0e6ed; }
 
-    .layout-google-dark .layout-header { background: #25232a; }
-    .layout-google-dark .layout-header .logo { background: #A8C7FA; }
+    .layout-google-dark .layout-header { background: #141218; }  /* 暗色 Header */
+    .layout-google-dark .layout-header .logo { background: #A8C7FA; }  /* M3 暗色主色 */
     .layout-google-dark .layout-header .nav-items .nav-item { background: rgba(255,255,255,0.15); }
     .layout-google-dark .layout-header .widgets .widget { background: rgba(255,255,255,0.2); }
-    .layout-google-dark .layout-sidebar { background: #25232a; }
-    .layout-google-dark .layout-sidebar .nav-icon { background: #36323d; }
+    .layout-google-dark .layout-sidebar { background: #211f26; }  /* M3 暗色 Surface Container */
+    .layout-google-dark .layout-sidebar .nav-icon { background: #33303a; }
     .layout-google-dark .layout-sidebar .nav-icon.active { background: #A8C7FA; }
-    .layout-google-dark .layout-content { background: #1c1b1f; }
+    .layout-google-dark .layout-content { background: #141218; }  /* M3 暗色 Surface */
     .layout-google-dark .layout-breadcrumb span { background: #49454f; }
-    .layout-google-dark .layout-card { background: #25232a; border-radius: 12px; }
+    .layout-google-dark .layout-card { background: #211f26; border-radius: 20px; }
     .layout-google-dark .layout-card-line { background: #49454f; }
     .layout-google-dark .layout-card-btn { background: #A8C7FA; border-radius: 20px; }
-    .layout-google-dark .layout-footer { background: #25232a; }
+    .layout-google-dark .layout-footer { background: #211f26; }
     .layout-google-dark .layout-footer span { background: #49454f; }
     
     /* Config Grid */
@@ -130,8 +130,8 @@
       position: relative;
     }
     .google-theme .mock-switch.active {
-      background: #4285F4;
-      border-color: #4285F4;
+      background: #0b57d0;
+      border-color: #0b57d0;
     }
     .google-theme .mock-switch.active .mock-switch-handle {
       width: 24px;
@@ -285,25 +285,25 @@
       <div class="comp-preview-row google-theme">
         <div class="comp-grid">
           <!-- Light Mode Preview -->
-          <div class="ctx-light" style="background: #fffbfe; padding: 20px; border-radius: 12px;">
+          <div class="ctx-light" style="background: #fdfbff; padding: 20px; border-radius: 20px;">
             <div class="comp-group-title">Material 3 Light</div>
             
             <div class="comp-group">
               <div class="comp-row">
-                <div class="mock-btn primary" style="background: #4285F4; border-radius: 20px;">Filled</div>
-                <div class="mock-btn secondary" style="border-color: #79747E; border-radius: 20px;">Outlined</div>
-                <div class="mock-btn ghost" style="color: #4285F4; border-radius: 20px;">Text</div>
+                <div class="mock-btn primary" style="background: #0b57d0; border-radius: 20px;">Filled</div>
+                <div class="mock-btn secondary" style="border-color: #72777f; border-radius: 20px;">Outlined</div>
+                <div class="mock-btn ghost" style="color: #0b57d0; border-radius: 20px;">Text</div>
               </div>
             </div>
 
             <div class="comp-group">
               <div class="comp-row">
                 <div class="mock-input-group">
-                  <input class="mock-input" type="text" value="Input Filled" style="background: #F3EDF7; border: none; border-bottom: 2px solid #4285F4; border-radius: 4px 4px 0 0;">
+                  <input class="mock-input" type="text" value="Input Filled" style="background: #e7ebf0; border: none; border-bottom: 2px solid #0b57d0; border-radius: 4px 4px 0 0;">
                 </div>
                 <!-- Standard M3 Switch -->
                 <div class="mock-switch active"><div class="mock-switch-handle"></div></div>
-                <div class="mock-checkbox" style="background: #4285F4; border-color: #4285F4; border-radius: 2px;">✓</div>
+                <div class="mock-checkbox" style="background: #0b57d0; border-color: #0b57d0; border-radius: 2px;">✓</div>
               </div>
             </div>
 
@@ -324,7 +324,7 @@
           </div>
 
           <!-- Dark Mode Preview -->
-          <div class="ctx-dark" style="background: #1c1b1f; padding: 20px; border-radius: 12px; border: 1px solid #49454f;">
+          <div class="ctx-dark" style="background: #141218; padding: 20px; border-radius: 20px; border: 1px solid #49454f;">
             <div class="comp-group-title">Material 3 Dark</div>
             
             <div class="comp-group">

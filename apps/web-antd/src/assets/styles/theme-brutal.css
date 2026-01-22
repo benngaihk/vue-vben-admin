@@ -7,10 +7,37 @@ html.theme-brutal {
   --brutal-border-color: #000;
   --brutal-border-width: 2px;
   --brutal-shadow-offset: 4px;
+  
+  /* 布局背景色变量 */
+  --vben-layout-bg: #e0ccff !important; /* Lavender/Purple */
+  --vben-content-bg: #e0ccff !important;
+  
+  /* CRITICAL: Tailwind 使用的变量 (HSL 格式) */
+  /* #ffffff (White Header) = HSL(0, 0%, 100%) */
+  /* #ff90e8 (Pink Sidebar) = HSL(310, 100%, 78%) */
+  /* #e0ccff (Purple Content) = HSL(260, 100%, 90%) */
+  --header: 0 0% 100% !important;
+  --sidebar: 310 100% 78% !important;
+  --layout: 260 100% 90% !important;
+  --content: 260 100% 90% !important;
+  
+  --background-deep: #e0ccff !important;
+  
+  --ant-layout-header-bg: #ffffff !important;
+  --ant-layout-sider-bg: #ff90e8 !important;
+  --ant-layout-body-bg: #e0ccff !important;
 }
 
 html.theme-brutal.dark {
   --brutal-border-color: #fff;
+  
+  /* 暗色模式布局变量 */
+  --header: 0 0% 10% !important;
+  --sidebar: 310 100% 40% !important;
+  --layout: 260 50% 15% !important;
+  --content: 260 50% 20% !important;
+  
+  --background-deep: #1a1a2e !important;
 }
 
 /* ==============================================
@@ -66,6 +93,86 @@ html.theme-brutal .vben-layout-content {
 /* TabBar */
 html.theme-brutal .vben-tabbar {
   border-bottom: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+}
+
+/* ==============================================
+   Menu & Sidebar Interactions (THE VBEN VARIABLE FIX)
+   ============================================== */
+
+/* 1. OVERRIDE VBEN COMPONENT VARIABLES */
+html.theme-brutal .vben-menu,
+html.theme-brutal .vben-layout-sidebar {
+  /* BACKGROUND: Transparent to show pink sidebar */
+  --menu-background-color: transparent !important;
+  
+  /* RADIUS: ZERO - Hard edges for brutalism */
+  --menu-item-radius: 0px !important;
+  
+  /* SPACING: Standard spacing */
+  --menu-item-margin-x: 8px !important; 
+  --menu-item-padding-x: 12px !important;
+  
+  /* COLORS: Cyan contrast on pink */
+  --menu-item-active-bg: #00f0ff !important;
+  --menu-item-active-color: #000000 !important;
+  --menu-item-hover-bg: rgba(0, 0, 0, 0.1) !important;
+}
+
+/* 2. FORCE STYLES ON THE VBEN CLASS STRUCTURE */
+
+/* The Item Container - DEFAULT STATE */
+html.theme-brutal .vben-menu-item,
+html.theme-brutal .vben-sub-menu > div:first-child,
+html.theme-brutal aside.ant-layout-sider .ant-menu-item, 
+html.theme-brutal aside.ant-layout-sider .ant-menu-submenu-title {
+  background-color: transparent !important; 
+  color: #000 !important;
+  
+  margin-inline: 8px !important;
+  margin-bottom: 4px !important;
+  width: auto !important;
+  overflow: hidden;
+  transition: all 0.1s ease;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* The Selected State - CYAN with BRUTAL shadow */
+html.theme-brutal .vben-menu-item.is-active,
+html.theme-brutal .vben-menu-item-active,
+html.theme-brutal aside.ant-layout-sider .ant-menu-item-selected {
+  background-color: #00f0ff !important;
+  color: #000 !important;
+  border: 2px solid #000 !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  transform: translate(-1px, -1px);
+}
+
+/* The Selected Text */
+html.theme-brutal .vben-menu-item.is-active *,
+html.theme-brutal .vben-menu-item-active *,
+html.theme-brutal aside.ant-layout-sider .ant-menu-item-selected * {
+  color: #000 !important;
+}
+
+/* Hover on Parent/Item */
+html.theme-brutal .vben-menu-item:not(.is-active):hover,
+html.theme-brutal .vben-sub-menu > div:first-child:hover,
+html.theme-brutal aside.ant-layout-sider .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  color: #000 !important;
+}
+
+/* Active/Open Parent (Folder) */
+html.theme-brutal .vben-sub-menu.is-active > div:first-child,
+html.theme-brutal .vben-sub-menu.is-opened > div:first-child {
+  font-weight: 800 !important;
+  color: #000 !important; 
+}
+
+/* RESET ANT DESIGN CONFLICTS */
+html.theme-brutal .ant-menu-item::after { 
+  display: none !important; 
 }
 
 /* ==============================================

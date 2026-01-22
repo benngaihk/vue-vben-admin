@@ -45,9 +45,13 @@ export const themePresets = {
     label: 'Google Material 3',
     icon: 'ph:google-logo',
     config: {
+      app: {
+        layout: 'header-sidebar-nav'
+      },
       navigation: {
         styleType: 'sidebar', // M3 usually uses a sidebar drawer
         split: false,
+        accordion: true,
       },
       sidebar: {
         width: 300, // M3 Navigation Drawer is wider (standard 360dp on tablet, but 300 is good for web)
@@ -66,6 +70,13 @@ export const themePresets = {
       footer: {
         enable: true,
         fixed: true,
+      },
+      breadcrumb: {
+        enable: true,
+        showIcon: true,
+      },
+      tabbar: {
+        enable: false,
       }
     }
   },
@@ -73,9 +84,13 @@ export const themePresets = {
     label: 'Modern SaaS',
     icon: 'ph:monitor',
     config: {
+      app: {
+        layout: 'header-sidebar-nav'
+      },
       navigation: {
         styleType: 'sidebar',
         split: false,
+        accordion: true,
       },
       sidebar: {
         width: 240,
@@ -87,14 +102,22 @@ export const themePresets = {
       },
       theme: {
         radius: '0.375', // 6px
-        semiDarkSidebar: true, // Crucial: This triggers the dark sidebar variables in Vben
+        semiDarkSidebar: false, // Crucial: This triggers the dark sidebar variables in Vben
         semiDarkHeader: false,
-        colorPrimary: '#18181b', // Zinc-900 (Black) - Matches CSS
+        colorPrimary: '#6366F1', // Zinc-900 (Black) - Matches CSS
         colorSuccess: '#10b981', // Emerald
         colorWarning: '#f59e0b', // Amber
         colorError: '#ef4444',   // Red
       },
+      footer: {
+        enable: false,
+      },
+      breadcrumb: {
+        enable: true,
+        showIcon: false,
+      },
       tabbar: {
+        enable: false,
         persist: true,
         styleType: 'brisk', // Minimalist tabs
       },
@@ -108,12 +131,18 @@ export const themePresets = {
     label: 'Neo-Brutalism',
     icon: 'ph:lightning',
     config: {
+      app: {
+        layout: 'sidebar-nav'  // 标准侧边栏布局
+      },
       navigation: {
         styleType: 'sidebar',
         split: false,
+        accordion: false, // Neo-Brutalism 不使用手风琴折叠
       },
       sidebar: {
         width: 280,
+        collapsed: false,
+        expandOnHover: false,
       },
       header: {
         height: 72, // Chunky header
@@ -123,8 +152,19 @@ export const themePresets = {
         semiDarkSidebar: false,
         semiDarkHeader: false,
         colorPrimary: '#00f0ff', // Cyan (High Contrast) - Matches CSS selection
+        colorSuccess: '#00ff88', // Neon Green
+        colorWarning: '#ffff00', // Bright Yellow
+        colorError: '#ff3366',   // Hot Pink
+      },
+      footer: {
+        enable: true,
+      },
+      breadcrumb: {
+        enable: true,
+        showIcon: true,
       },
       tabbar: {
+        enable: true,
         showRefresh: false,
         styleType: 'chrome', // Blocky tabs
       },

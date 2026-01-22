@@ -13,11 +13,37 @@ html.theme-google {
   --m3-surface: #fdfbff;
   --m3-surface-container: #f0f4f8; /* Light blueish tint for sidebar/bg */
   --m3-primary-container: #d3e3fd;
+  
+  /* 布局背景色变量 */
+  --vben-layout-bg: #f0f4f9 !important;
+  --vben-content-bg: #fdfbff !important;
+  
+  /* CRITICAL: Tailwind 使用的变量 (HSL 格式) */
+  /* #1f1f1f (Dark Grey Header) = HSL(0, 0%, 12%) */
+  /* #f0f4f9 (Light Surface) = HSL(213, 33%, 96%) */
+  --header: 0 0% 12% !important;
+  --sidebar: 213 33% 96% !important;
+  --layout: 213 33% 96% !important;
+  --content: 0 0% 99% !important; /* #fdfbff */
+  
+  --background-deep: #f0f4f9 !important;
+  
+  --ant-layout-header-bg: #1f1f1f !important;
+  --ant-layout-sider-bg: #f0f4f9 !important;
+  --ant-layout-body-bg: #f0f4f9 !important;
 }
 
 html.theme-google.dark {
   --m3-surface: #141218;
   --m3-surface-container: #211f26;
+  
+  /* 暗色模式布局变量 */
+  --header: 0 0% 8% !important;
+  --sidebar: 260 12% 14% !important;
+  --layout: 260 12% 8% !important;
+  --content: 260 12% 10% !important;
+  
+  --background-deep: #141218 !important;
 }
 
 /* Root Layout */
@@ -48,11 +74,81 @@ html.theme-google aside.ant-layout-sider {
   border: none !important;
 }
 
-/* Sidebar Menu Selected: Pill Shape with M3 Blue */
-html.theme-google .ant-menu .ant-menu-item-selected {
-  background-color: #c2e7ff !important; /* M3 active container */
-  color: #001d35 !important; /* on-surface text */
+/* ==============================================
+   Menu & Sidebar Interactions (THE VBEN VARIABLE FIX)
+   ============================================== */
+
+/* 1. OVERRIDE VBEN COMPONENT VARIABLES */
+html.theme-google .vben-menu,
+html.theme-google .vben-layout-sidebar {
+  /* BACKGROUND: Override the white background behind items */
+  --menu-background-color: transparent !important;
+  
+  /* RADIUS: M3 uses full pill shape for menu items */
+  --menu-item-radius: 999px !important;
+  
+  /* SPACING: Make it not touch the edges */
+  --menu-item-margin-x: 12px !important; 
+  --menu-item-padding-x: 16px !important;
+  
+  /* COLORS: M3 Primary Container Blue */
+  --menu-item-active-bg: #c2e7ff !important;
+  --menu-item-active-color: #001d35 !important;
+  --menu-item-hover-bg: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* 2. FORCE STYLES ON THE VBEN CLASS STRUCTURE */
+
+/* The Item Container - DEFAULT STATE */
+html.theme-google .vben-menu-item,
+html.theme-google .vben-sub-menu > div:first-child,
+html.theme-google .ant-menu-item, 
+html.theme-google .ant-menu-submenu-title {
+  /* Transparent background on unselected items (M3 style) */
+  background-color: transparent !important; 
+  color: #1f1f1f !important;
+  
+  margin-inline: 12px !important;
+  margin-bottom: 4px !important;
+  width: auto !important;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* The Selected State - M3 Primary Container */
+html.theme-google .vben-menu-item.is-active,
+html.theme-google .vben-menu-item-active,
+html.theme-google .ant-menu-item-selected {
+  background-color: #c2e7ff !important;
+  color: #001d35 !important;
   font-weight: 700 !important;
+}
+
+/* The Selected Text */
+html.theme-google .vben-menu-item.is-active *,
+html.theme-google .vben-menu-item-active *,
+html.theme-google .ant-menu-item-selected * {
+  color: #001d35 !important;
+}
+
+/* Hover on Parent/Item */
+html.theme-google .vben-menu-item:not(.is-active):hover,
+html.theme-google .vben-sub-menu > div:first-child:hover,
+html.theme-google .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+  color: #1f1f1f !important;
+}
+
+/* Active/Open Parent (Folder) */
+html.theme-google .vben-sub-menu.is-active > div:first-child,
+html.theme-google .vben-sub-menu.is-opened > div:first-child {
+  font-weight: 600 !important;
+  color: #0b57d0 !important; 
+}
+
+/* RESET ANT DESIGN CONFLICTS */
+html.theme-google .ant-menu-item::after { 
+  display: none !important; 
 }
 
 /* Sidebar Toggle / Triggers */

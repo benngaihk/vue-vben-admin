@@ -9,12 +9,39 @@ html.theme-modern {
   --modern-border: #e4e4e7; /* Zinc-200 */
   --modern-border-strong: #d4d4d8; /* Zinc-300 */
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  
+  /* 布局背景色变量 */
+  --vben-layout-bg: #f4f4f5 !important;
+  --vben-content-bg: #ffffff !important;
+  
+  /* CRITICAL: Tailwind 使用的变量 (HSL 格式) */
+  /* #18181b (Zinc-900 Sidebar) = HSL(240, 6%, 10%) */
+  /* #ffffff (White Header) = HSL(0, 0%, 100%) */
+  /* #f4f4f5 (Zinc-100 Background) = HSL(240, 6%, 96%) */
+  --header: 0 0% 100% !important;
+  --sidebar: 218 28% 17% !important;
+  --layout: 240 6% 96% !important;
+  --content: 0 0% 100% !important;
+  
+  --background-deep: #f4f4f5 !important;
+  
+  --ant-layout-header-bg: #ffffff !important;
+  --ant-layout-sider-bg: #18181b !important;
+  --ant-layout-body-bg: #f4f4f5 !important;
 }
 
 html.theme-modern.dark {
   --modern-bg: #09090b; /* Zinc-950 */
   --modern-border: #27272a; /* Zinc-800 */
   --modern-border-strong: #3f3f46; /* Zinc-700 */
+  
+  /* 暗色模式布局变量 */
+  --header: 240 6% 4% !important;
+  --sidebar: 240 6% 10% !important;
+  --layout: 240 6% 4% !important;
+  --content: 240 6% 6% !important;
+  
+  --background-deep: #09090b !important;
 }
 
 /* ==============================================
@@ -54,7 +81,7 @@ html.theme-modern aside.ant-layout-sider .ant-menu-item:hover {
 /* Menu Item Selected */
 html.theme-modern aside.ant-layout-sider .ant-menu-item-selected {
   background-color: #fafafa !important; /* White accent for contrast or inverted logic? Design shows Blue usually, but lets match 'Dark Sidebar' typical look */
-  background-color: #3f3f46 !important; /* Zinc-700 */
+  background-color: #263040 !important; /* Zinc-700 */
   color: #ffffff !important;
   border-radius: 6px;
 }
@@ -63,6 +90,81 @@ html.theme-modern aside.ant-layout-sider .ant-menu-item-selected {
 /* Assuming there is a logo container, force it dark */
 html.theme-modern .layout-sider-logo {
   border-bottom: 1px solid #27272a !important;
+}
+
+/* ==============================================
+   Menu & Sidebar Interactions (THE VBEN VARIABLE FIX)
+   ============================================== */
+
+/* 1. OVERRIDE VBEN COMPONENT VARIABLES */
+html.theme-modern .vben-menu,
+html.theme-modern .vben-layout-sidebar {
+  /* BACKGROUND: Transparent to show dark sidebar */
+  --menu-background-color: transparent !important;
+  
+  /* RADIUS: Small radius for technical feel */
+  --menu-item-radius: 6px !important;
+  
+  /* SPACING: Standard spacing */
+  --menu-item-margin-x: 8px !important; 
+  --menu-item-padding-x: 12px !important;
+  
+  /* COLORS: Zinc palette for dark sidebar */
+  --menu-item-active-bg: #3f3f46 !important; /* Zinc-700 */
+  --menu-item-active-color: #ffffff !important;
+  --menu-item-hover-bg: #27272a !important; /* Zinc-800 */
+}
+
+/* 2. FORCE STYLES ON THE VBEN CLASS STRUCTURE */
+
+/* The Item Container - DEFAULT STATE (Dark Sidebar = Light Text) */
+html.theme-modern .vben-menu-item,
+html.theme-modern .vben-sub-menu > div:first-child,
+html.theme-modern aside.ant-layout-sider .ant-menu-item, 
+html.theme-modern aside.ant-layout-sider .ant-menu-submenu-title {
+  background-color: transparent !important; 
+  color: #a1a1aa !important; /* Zinc-400 */
+  
+  margin-inline: 8px !important;
+  margin-bottom: 4px !important;
+  width: auto !important;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* The Selected State */
+html.theme-modern .vben-menu-item.is-active,
+html.theme-modern .vben-menu-item-active,
+html.theme-modern aside.ant-layout-sider .ant-menu-item-selected {
+  background-color: #3f3f46 !important; /* Zinc-700 */
+  color: #ffffff !important;
+}
+
+/* The Selected Text */
+html.theme-modern .vben-menu-item.is-active *,
+html.theme-modern .vben-menu-item-active *,
+html.theme-modern aside.ant-layout-sider .ant-menu-item-selected * {
+  color: #ffffff !important;
+}
+
+/* Hover on Parent/Item */
+html.theme-modern .vben-menu-item:not(.is-active):hover,
+html.theme-modern .vben-sub-menu > div:first-child:hover,
+html.theme-modern aside.ant-layout-sider .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  background-color: #27272a !important; /* Zinc-800 */
+  color: #ffffff !important;
+}
+
+/* Active/Open Parent (Folder) */
+html.theme-modern .vben-sub-menu.is-active > div:first-child,
+html.theme-modern .vben-sub-menu.is-opened > div:first-child {
+  font-weight: 600 !important;
+  color: #ffffff !important; 
+}
+
+/* RESET ANT DESIGN CONFLICTS */
+html.theme-modern .ant-menu-item::after { 
+  display: none !important; 
 }
 
 /* TabBar */
