@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kortex Theme - Google Material 3</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Shared CSS + Google Specifics */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #09090b 0%, #0f0f12 100%);
+      color: #fafafa;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    .theme-section { margin-bottom: 64px; background: #18181b; border-radius: 16px; border: 1px solid #27272a; overflow: hidden; }
+    .theme-header { padding: 24px 32px; border-bottom: 1px solid #27272a; display: flex; align-items: center; gap: 16px; }
+    .theme-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .theme-icon.google { background: linear-gradient(135deg, #4285F4 0%, #34A853 50%, #FBBC04 100%); }
+    .theme-info h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 4px; }
+    .theme-info p { font-size: 0.875rem; color: #71717a; }
+    .theme-body { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #27272a; }
+    .theme-panel { background: #18181b; padding: 24px; }
+    .panel-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #52525b; margin-bottom: 16px; }
+
+    /* Layout Preview CSS */
+    .layout-preview { background: #09090b; border-radius: 12px; border: 1px solid #27272a; overflow: hidden; height: 380px; position: relative; }
+    .layout-header { height: 32px; display: flex; align-items: center; padding: 0 12px; gap: 8px; border-bottom: 1px solid #27272a; }
+    .layout-header .logo { width: 16px; height: 16px; border-radius: 4px; }
+    .layout-header .widgets { display: flex; gap: 6px; }
+    .layout-header .widget { width: 12px; height: 12px; border-radius: 3px; }
+    .layout-body { display: flex; height: calc(100% - 32px); }
+    .layout-sidebar { display: flex; flex-direction: column; padding: 8px; gap: 4px; border-right: 1px solid #27272a; }
+    .layout-sidebar .nav-icon { width: 24px; height: 24px; border-radius: 6px; }
+    .layout-sidebar .nav-icon.active { opacity: 1; }
+    .layout-sidebar .nav-icon:not(.active) { opacity: 0.3; }
+    .layout-sidebar.expanded { width: 100px; }
+    .layout-sidebar.expanded .nav-icon { width: 100%; height: 20px; }
+    .layout-content { flex: 1; padding: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .layout-breadcrumb { height: 12px; display: flex; gap: 4px; align-items: center; }
+    .layout-breadcrumb span { height: 6px; border-radius: 2px; }
+    .layout-card { flex: 1; border-radius: 8px; padding: 12px; }
+    .layout-card-line { height: 6px; border-radius: 2px; margin-bottom: 6px; }
+    .layout-card-btn { width: 50px; height: 16px; border-radius: 4px; margin-top: 8px; }
+    .layout-footer { position: absolute; bottom: 0; left: 0; right: 0; height: 24px; display: flex; align-items: center; justify-content: center; border-top: 1px solid #27272a; }
+    .layout-footer span { height: 6px; width: 100px; border-radius: 2px; }
+
+    .layout-header .nav-items { display: flex; gap: 6px; flex: 1; }
+    .layout-header .nav-item { height: 8px; border-radius: 2px; width: 40px; }
+
+    /* Google Layout Colors */
+    .layout-google-light .layout-header { background: #1c1b1f; }
+    .layout-google-light .layout-header .logo { background: #4285F4; }
+    .layout-google-light .layout-header .nav-items .nav-item { background: rgba(255,255,255,0.2); }
+    .layout-google-light .layout-header .widgets .widget { background: rgba(255,255,255,0.3); }
+    .layout-google-light .layout-sidebar { background: #f7f2fa; }
+    .layout-google-light .layout-sidebar .nav-icon { background: #e7e0ec; }
+    .layout-google-light .layout-sidebar .nav-icon.active { background: #4285F4; }
+    .layout-google-light .layout-content { background: #fffbfe; }
+    .layout-google-light .layout-breadcrumb span { background: #e7e0ec; }
+    .layout-google-light .layout-card { background: #f7f2fa; border-radius: 12px; }
+    .layout-google-light .layout-card-line { background: #e7e0ec; }
+    .layout-google-light .layout-card-btn { background: #4285F4; border-radius: 20px; }
+    .layout-google-light .layout-footer { background: #f7f2fa; }
+    .layout-google-light .layout-footer span { background: #e7e0ec; }
+
+    .layout-google-dark .layout-header { background: #25232a; }
+    .layout-google-dark .layout-header .logo { background: #A8C7FA; }
+    .layout-google-dark .layout-header .nav-items .nav-item { background: rgba(255,255,255,0.15); }
+    .layout-google-dark .layout-header .widgets .widget { background: rgba(255,255,255,0.2); }
+    .layout-google-dark .layout-sidebar { background: #25232a; }
+    .layout-google-dark .layout-sidebar .nav-icon { background: #36323d; }
+    .layout-google-dark .layout-sidebar .nav-icon.active { background: #A8C7FA; }
+    .layout-google-dark .layout-content { background: #1c1b1f; }
+    .layout-google-dark .layout-breadcrumb span { background: #49454f; }
+    .layout-google-dark .layout-card { background: #25232a; border-radius: 12px; }
+    .layout-google-dark .layout-card-line { background: #49454f; }
+    .layout-google-dark .layout-card-btn { background: #A8C7FA; border-radius: 20px; }
+    .layout-google-dark .layout-footer { background: #25232a; }
+    .layout-google-dark .layout-footer span { background: #49454f; }
+    
+    /* Config Grid */
+    .feature-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+    .feature-tag { padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 500; background: #27272a; color: #a1a1aa; }
+    .feature-tag.active { background: rgba(99, 102, 241, 0.15); color: #a5b4fc; }
+    .feature-tag.inactive { background: #1f1f23; color: #52525b; text-decoration: line-through; }
+    .config-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .config-item { padding: 10px 12px; background: #0f0f12; border-radius: 8px; border: 1px solid #27272a; }
+    .config-label { font-size: 0.65rem; color: #52525b; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+    .config-value { font-size: 0.8rem; font-family: 'JetBrains Mono', monospace; color: #e4e4e7; }
+
+    /* Component Mockups */
+    .comp-preview-row { grid-column: span 2; border-top: 1px solid #27272a; padding: 24px; background: #18181b; }
+    .comp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .comp-group { margin-bottom: 24px; }
+    .comp-group-title { font-size: 0.7rem; color: #71717a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .comp-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    
+    .mock-btn { height: 32px; padding: 0 16px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 500; border: 1px solid transparent; cursor: pointer; transition: opacity 0.2s; }
+    .mock-btn.primary { color: white; }
+    .mock-btn.secondary { background: transparent; border: 1px solid; }
+    .mock-btn.ghost { background: transparent; }
+    
+    .mock-input-group { position: relative; flex: 1; max-width: 200px; }
+    .mock-input { width: 100%; height: 36px; background: transparent; border: 1px solid; padding: 0 12px; font-size: 0.8rem; outline: none; }
+    .mock-checkbox { width: 18px; height: 18px; border: 1px solid; display: flex; align-items: center; justify-content: center; color: white; font-size: 12px; }
+    
+    .mock-tag { height: 22px; padding: 0 8px; font-size: 0.7rem; display: flex; align-items: center; font-weight: 500; border: 1px solid transparent; }
+    .mock-alert { padding: 10px 12px; font-size: 0.8rem; display: flex; align-items: center; gap: 8px; width: 100%; border: 1px solid transparent; }
+
+    /* Google Theme Specifics for Components */
+    .google-theme .mock-btn { border-radius: 20px; }
+    .google-theme .mock-input { border-radius: 4px; border-width: 1px; }
+    .google-theme .mock-checkbox { border-radius: 2px; }
+    .google-theme .mock-tag { border-radius: 8px; }
+    .google-theme .mock-alert { border-radius: 12px; }
+
+    /* Google Switch */
+    .google-theme .mock-switch {
+      width: 52px;
+      height: 32px;
+      border-radius: 16px;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      position: relative;
+    }
+    .google-theme .mock-switch.active {
+      background: #4285F4;
+      border-color: #4285F4;
+    }
+    .google-theme .mock-switch.active .mock-switch-handle {
+      width: 24px;
+      height: 24px;
+      background: #FFFFFF;
+      left: auto;
+      right: 2px;
+      top: 2px;
+      box-shadow: none;
+      position: absolute;
+      border-radius: 50%;
+    }
+    .google-theme .ctx-dark .mock-switch.active .mock-switch-handle {
+      background: #003351;
+    }
+
+    .ctx-light { color: #18181b; }
+    .ctx-light .mock-input { border-color: #e4e4e7; color: #18181b; }
+    .ctx-light .mock-btn.secondary { border-color: #e4e4e7; color: #18181b; }
+    .ctx-light .mock-btn.ghost { color: #52525b; }
+    
+    .ctx-dark { color: #fafafa; }
+    .ctx-dark .mock-input { border-color: #3f3f46; color: #fafafa; }
+    .ctx-dark .mock-btn.secondary { border-color: #3f3f46; color: #fafafa; }
+    .ctx-dark .mock-btn.ghost { color: #a1a1aa; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="theme-section">
+      <div class="theme-header">
+        <div class="theme-icon google">G</div>
+        <div class="theme-info">
+          <h2>Google Material 3</h2>
+          <p>Material You - Mixed navigation with top menu + side drawer + footer</p>
+        </div>
+      </div>
+      <div class="theme-body">
+        <!-- Light Mode -->
+        <div class="theme-panel">
+          <div class="panel-title">Light Mode Layout (Mixed Navigation)</div>
+          <div class="layout-preview layout-google-light">
+            <div class="layout-header">
+              <div class="logo"></div>
+              <div class="nav-items">
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+              </div>
+              <div class="widgets">
+                <div class="widget"></div>
+                <div class="widget"></div>
+              </div>
+            </div>
+            <div class="layout-body" style="height: calc(100% - 32px - 24px);">
+              <div class="layout-sidebar expanded">
+                <div class="nav-icon active"></div>
+                <div class="nav-icon"></div>
+                <div class="nav-icon"></div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-breadcrumb">
+                  <span style="width: 12px; height: 12px; border-radius: 3px;"></span>
+                  <span style="width: 30px;"></span>
+                  <span style="width: 40px;"></span>
+                </div>
+                <div class="layout-card">
+                  <div class="layout-card-line" style="width: 70%;"></div>
+                  <div class="layout-card-line" style="width: 50%;"></div>
+                  <div class="layout-card-btn"></div>
+                </div>
+              </div>
+            </div>
+            <div class="layout-footer">
+              <span></span>
+            </div>
+          </div>
+          <div class="feature-tags">
+            <span class="feature-tag active">mixed navigation</span>
+            <span class="feature-tag active">split menu</span>
+            <span class="feature-tag active">semiDarkHeader</span>
+            <span class="feature-tag active">footer (fixed)</span>
+            <span class="feature-tag active">globalSearch</span>
+            <span class="feature-tag active">breadcrumb (with icon)</span>
+          </div>
+        </div>
+
+        <!-- Dark Mode -->
+        <div class="theme-panel">
+          <div class="panel-title">Dark Mode Layout</div>
+          <div class="layout-preview layout-google-dark">
+            <div class="layout-header">
+              <div class="logo"></div>
+              <div class="nav-items">
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+                <div class="nav-item"></div>
+              </div>
+              <div class="widgets">
+                <div class="widget"></div>
+                <div class="widget"></div>
+              </div>
+            </div>
+            <div class="layout-body" style="height: calc(100% - 32px - 24px);">
+              <div class="layout-sidebar expanded">
+                <div class="nav-icon active"></div>
+                <div class="nav-icon"></div>
+                <div class="nav-icon"></div>
+              </div>
+              <div class="layout-content">
+                <div class="layout-breadcrumb">
+                  <span style="width: 12px; height: 12px; border-radius: 3px;"></span>
+                  <span style="width: 30px;"></span>
+                  <span style="width: 40px;"></span>
+                </div>
+                <div class="layout-card">
+                  <div class="layout-card-line" style="width: 70%;"></div>
+                  <div class="layout-card-line" style="width: 50%;"></div>
+                  <div class="layout-card-btn"></div>
+                </div>
+              </div>
+            </div>
+            <div class="layout-footer">
+              <span></span>
+            </div>
+          </div>
+          <div class="config-grid" style="margin-top: 16px;">
+            <div class="config-item">
+              <div class="config-label">Navigation</div>
+              <div class="config-value">mixed + split</div>
+            </div>
+            <div class="config-item">
+              <div class="config-label">Header</div>
+              <div class="config-value">64px (dark)</div>
+            </div>
+            <div class="config-item">
+              <div class="config-label">Radius</div>
+              <div class="config-value">12px</div>
+            </div>
+            <div class="config-item">
+              <div class="config-label">Transition</div>
+              <div class="config-value">fade-slide</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Components & Colors -->
+      <div class="comp-preview-row google-theme">
+        <div class="comp-grid">
+          <!-- Light Mode Preview -->
+          <div class="ctx-light" style="background: #fffbfe; padding: 20px; border-radius: 12px;">
+            <div class="comp-group-title">Material 3 Light</div>
+            
+            <div class="comp-group">
+              <div class="comp-row">
+                <div class="mock-btn primary" style="background: #4285F4; border-radius: 20px;">Filled</div>
+                <div class="mock-btn secondary" style="border-color: #79747E; border-radius: 20px;">Outlined</div>
+                <div class="mock-btn ghost" style="color: #4285F4; border-radius: 20px;">Text</div>
+              </div>
+            </div>
+
+            <div class="comp-group">
+              <div class="comp-row">
+                <div class="mock-input-group">
+                  <input class="mock-input" type="text" value="Input Filled" style="background: #F3EDF7; border: none; border-bottom: 2px solid #4285F4; border-radius: 4px 4px 0 0;">
+                </div>
+                <!-- Standard M3 Switch -->
+                <div class="mock-switch active"><div class="mock-switch-handle"></div></div>
+                <div class="mock-checkbox" style="background: #4285F4; border-color: #4285F4; border-radius: 2px;">✓</div>
+              </div>
+            </div>
+
+            <div class="comp-group">
+              <div class="comp-row">
+                <div class="mock-tag" style="background: #E8F0FE; color: #1967D2; border: none; border-radius: 8px;">Badge</div>
+                <div class="mock-tag" style="background: #E6F4EA; color: #137333; border: none; border-radius: 8px;">Success</div>
+                <div class="mock-tag" style="background: #FEF7FF; color: #B3261E; border: 1px solid #B3261E; border-radius: 8px;">Warning</div>
+              </div>
+            </div>
+            
+            <div class="comp-group" style="margin-bottom: 0;">
+              <div class="mock-alert" style="background: #E8F0FE; color: #041E49; border-radius: 12px; border: none;">
+                <div style="font-weight: 600;">Info</div>
+                <div style="opacity: 0.8; font-size: 0.75rem;">System notification message.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dark Mode Preview -->
+          <div class="ctx-dark" style="background: #1c1b1f; padding: 20px; border-radius: 12px; border: 1px solid #49454f;">
+            <div class="comp-group-title">Material 3 Dark</div>
+            
+            <div class="comp-group">
+              <div class="comp-row">
+                <div class="mock-btn primary" style="background: #A8C7FA; color: #003351; border-radius: 20px;">Filled</div>
+                <div class="mock-btn secondary" style="border-color: #938F99; border-radius: 20px;">Outlined</div>
+                <div class="mock-btn ghost" style="color: #A8C7FA; border-radius: 20px;">Text</div>
+              </div>
+            </div>
+
+            <div class="comp-group">
+              <div class="comp-row">
+                <div class="mock-input-group">
+                  <input class="mock-input" type="text" value="Input Filled" style="background: #4a4458; border: none; border-bottom: 2px solid #A8C7FA; border-radius: 4px 4px 0 0; color: #e6e1e5;">
+                </div>
+                <div class="mock-checkbox" style="background: #A8C7FA; border-color: #A8C7FA; color: #003351; border-radius: 2px;">✓</div>
+                <div class="mock-switch active" style="background: #A8C7FA; border-color: #A8C7FA;"><div class="mock-switch-handle" style="background: #003351;"></div></div>
+              </div>
+            </div>
+
+            <div class="comp-group">
+              <div class="comp-row">
+                <div class="mock-tag" style="background: #004a77; color: #c2e7ff; border: none; border-radius: 8px;">Badge</div>
+                <div class="mock-tag" style="background: #0c3b20; color: #c4eed0; border: none; border-radius: 8px;">Success</div>
+                <div class="mock-tag" style="background: #601410; color: #F2B8B5; border: 1px solid #F2B8B5; border: none; border-radius: 8px;">Warning</div>
+              </div>
+            </div>
+
+            <div class="comp-group" style="margin-bottom: 0;">
+              <div class="mock-alert" style="background: #004a77; color: #c2e7ff; border-radius: 12px; border: none;">
+                <div style="font-weight: 600;">Info</div>
+                <div style="opacity: 0.8; font-size: 0.75rem;">System notification message.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

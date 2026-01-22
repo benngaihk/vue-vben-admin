@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kortex Theme System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #09090b;
+      color: #fafafa;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    
+    .header {
+      padding: 16px 24px;
+      border-bottom: 1px solid #27272a;
+      background: #0f0f12;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+    
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 8px;
+      background: #18181b;
+      padding: 4px;
+      border-radius: 8px;
+    }
+    
+    .tab-btn {
+      padding: 8px 16px;
+      border-radius: 6px;
+      border: none;
+      background: transparent;
+      color: #71717a;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .tab-btn:hover {
+      color: #e4e4e7;
+      background: rgba(255,255,255,0.05);
+    }
+    
+    .tab-btn.active {
+      background: #27272a;
+      color: #fafafa;
+      font-weight: 600;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .tab-icon { font-size: 1rem; }
+    
+    .main-content {
+      flex: 1;
+      position: relative;
+      background: #09090b;
+    }
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: none;
+    }
+    
+    iframe.active {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="brand">
+      <h1>Kortex Theme System</h1>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('overview')">
+        <span class="tab-icon">📊</span> Overview
+      </button>
+      <button class="tab-btn" onclick="switchTab('apple')">
+        <span class="tab-icon">🍎</span> Apple Style
+      </button>
+      <button class="tab-btn" onclick="switchTab('google')">
+        <span class="tab-icon">🇬</span> Google M3
+      </button>
+      <button class="tab-btn" onclick="switchTab('modern')">
+        <span class="tab-icon">Ⓜ️</span> Modern SaaS
+      </button>
+      <button class="tab-btn" onclick="switchTab('brutal')">
+        <span class="tab-icon">⚡</span> Neo-Brutalism
+      </button>
+    </div>
+    <div style="width: 100px;"></div> <!-- Spacer for center balance -->
+  </header>
+  
+  <main class="main-content">
+    <iframe id="iframe-overview" class="active" src="preview-overview.html"></iframe>
+    <iframe id="iframe-apple" src="preview-apple.html"></iframe>
+    <iframe id="iframe-google" src="preview-google.html"></iframe>
+    <iframe id="iframe-modern" src="preview-modern.html"></iframe>
+    <iframe id="iframe-brutal" src="preview-brutal.html"></iframe>
+  </main>
+
+  <script>
+    function switchTab(tabName) {
+      // Update Tab Buttons
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+      
+      // Update Iframes
+      document.querySelectorAll('iframe').forEach(frame => frame.classList.remove('active'));
+      document.getElementById('iframe-' + tabName).classList.add('active');
+    }
+  </script>
+</body>
+</html>

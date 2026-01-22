@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kortex Theme Overview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* Shared CSS */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #09090b 0%, #0f0f12 100%);
+      color: #fafafa;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    .container { max-width: 1400px; margin: 0 auto; }
+    h1 {
+      text-align: center;
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle { text-align: center; color: #71717a; font-size: 1rem; margin-bottom: 48px; }
+    .theme-section { margin-bottom: 64px; background: #18181b; border-radius: 16px; border: 1px solid #27272a; overflow: hidden; }
+    .theme-header { padding: 24px 32px; border-bottom: 1px solid #27272a; display: flex; align-items: center; gap: 16px; }
+    .theme-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+    .theme-info h2 { font-size: 1.25rem; font-weight: 600; margin-bottom: 4px; }
+    .theme-info p { font-size: 0.875rem; color: #71717a; }
+    
+    /* Comparison Table Styles */
+    .comparison-section { margin-top: 0; }
+    .comparison-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 20px; text-align: center; }
+    .comparison-table { width: 100%; border-collapse: collapse; background: #18181b; border-radius: 12px; overflow: hidden; font-size: 0.8rem; }
+    .comparison-table th, .comparison-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid #27272a; }
+    .comparison-table th { background: #0f0f12; font-weight: 600; color: #71717a; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .comparison-table tr:last-child td { border-bottom: none; }
+    .comparison-table td:first-child { color: #a1a1aa; font-weight: 500; }
+    .val-true { color: #10b981; }
+    .val-false { color: #52525b; }
+    .val-highlight { color: #a5b4fc; font-weight: 600; }
+    
+    .panel-title { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: #52525b; margin-bottom: 16px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Color Overview -->
+    <section class="theme-section">
+      <div class="theme-header" style="border-bottom: none; padding-bottom: 16px;">
+        <div class="theme-icon" style="background: linear-gradient(135deg, #007AFF 0%, #4285F4 50%, #6366F1 100%);">🎨</div>
+        <div class="theme-info">
+          <h2>Color Palette Overview</h2>
+          <p>三种风格的主题色对比 - 亮色模式 / 暗色模式</p>
+        </div>
+      </div>
+      <div style="padding: 0 24px 24px;">
+        <!-- Primary Colors -->
+        <div style="margin-bottom: 20px;">
+          <div class="panel-title" style="margin-bottom: 12px;">Primary 主色调</div>
+          <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;">
+            <div style="text-align: center;">
+              <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                <div style="flex: 1; height: 48px; background: #007AFF; border-radius: 8px 0 0 8px;"></div>
+                <div style="flex: 1; height: 48px; background: #0A84FF; border-radius: 0 8px 8px 0;"></div>
+              </div>
+              <div style="font-size: 0.75rem; color: #a1a1aa;">Apple Blue</div>
+              <div style="font-size: 0.65rem; color: #52525b; font-family: 'JetBrains Mono', monospace;">#007AFF / #0A84FF</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                <div style="flex: 1; height: 48px; background: #4285F4; border-radius: 8px 0 0 8px;"></div>
+                <div style="flex: 1; height: 48px; background: #A8C7FA; border-radius: 0 8px 8px 0;"></div>
+              </div>
+              <div style="font-size: 0.75rem; color: #a1a1aa;">Google Blue</div>
+              <div style="font-size: 0.65rem; color: #52525b; font-family: 'JetBrains Mono', monospace;">#4285F4 / #A8C7FA</div>
+            </div>
+            <div style="text-align: center;">
+              <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                <div style="flex: 1; height: 48px; background: #6366F1; border-radius: 8px 0 0 8px;"></div>
+                <div style="flex: 1; height: 48px; background: #818CF8; border-radius: 0 8px 8px 0;"></div>
+              </div>
+              <div style="font-size: 0.75rem; color: #a1a1aa;">Indigo</div>
+              <div style="font-size: 0.65rem; color: #52525b; font-family: 'JetBrains Mono', monospace;">#6366F1 / #818CF8</div>
+            </div>
+             <div style="text-align: center;">
+              <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+                <div style="flex: 1; height: 48px; background: #000000; border: 2px solid #fff;"></div>
+                <div style="flex: 1; height: 48px; background: #FFFFFF; border: 2px solid #fff;"></div>
+              </div>
+              <div style="font-size: 0.75rem; color: #a1a1aa;">Monochrome</div>
+              <div style="font-size: 0.65rem; color: #52525b; font-family: 'JetBrains Mono', monospace;">#000000 / #FFFFFF</div>
+            </div>
+          </div>
+        </div>
+        <!-- All Theme Colors Row -->
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+          <!-- Apple -->
+          <div style="background: #0f0f12; border-radius: 12px; padding: 16px; border: 1px solid #27272a;">
+            <div style="font-size: 0.7rem; color: #71717a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Apple Style</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+              <div style="height: 32px; background: #007AFF; border-radius: 6px;" title="Primary"></div>
+              <div style="height: 32px; background: #34C759; border-radius: 6px;" title="Success"></div>
+              <div style="height: 32px; background: #FF9500; border-radius: 6px;" title="Warning"></div>
+              <div style="height: 32px; background: #FF3B30; border-radius: 6px;" title="Error"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 6px;">
+              <div style="height: 32px; background: #0A84FF; border-radius: 6px;" title="Primary Dark"></div>
+              <div style="height: 32px; background: #30D158; border-radius: 6px;" title="Success Dark"></div>
+              <div style="height: 32px; background: #FF9F0A; border-radius: 6px;" title="Warning Dark"></div>
+              <div style="height: 32px; background: #FF453A; border-radius: 6px;" title="Error Dark"></div>
+            </div>
+          </div>
+          <!-- Google -->
+          <div style="background: #0f0f12; border-radius: 12px; padding: 16px; border: 1px solid #27272a;">
+            <div style="font-size: 0.7rem; color: #71717a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Google Material 3</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+              <div style="height: 32px; background: #4285F4; border-radius: 6px;" title="Primary"></div>
+              <div style="height: 32px; background: #2BA568; border-radius: 6px;" title="Success"></div>
+              <div style="height: 32px; background: #FBBC04; border-radius: 6px;" title="Warning"></div>
+              <div style="height: 32px; background: #EA4335; border-radius: 6px;" title="Error"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 6px;">
+              <div style="height: 32px; background: #A8C7FA; border-radius: 6px;" title="Primary Dark"></div>
+              <div style="height: 32px; background: #6DD58C; border-radius: 6px;" title="Success Dark"></div>
+              <div style="height: 32px; background: #ECD271; border-radius: 6px;" title="Warning Dark"></div>
+              <div style="height: 32px; background: #F2B8B5; border-radius: 6px;" title="Error Dark"></div>
+            </div>
+          </div>
+          <!-- Modern -->
+          <div style="background: #0f0f12; border-radius: 12px; padding: 16px; border: 1px solid #27272a;">
+            <div style="font-size: 0.7rem; color: #71717a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Modern Western</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+              <div style="height: 32px; background: #6366F1; border-radius: 6px;" title="Primary"></div>
+              <div style="height: 32px; background: #10B981; border-radius: 6px;" title="Success"></div>
+              <div style="height: 32px; background: #F59E0B; border-radius: 6px;" title="Warning"></div>
+              <div style="height: 32px; background: #F43F5E; border-radius: 6px;" title="Error"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 6px;">
+              <div style="height: 32px; background: #818CF8; border-radius: 6px;" title="Primary Dark"></div>
+              <div style="height: 32px; background: #34D399; border-radius: 6px;" title="Success Dark"></div>
+              <div style="height: 32px; background: #FBBF24; border-radius: 6px;" title="Warning Dark"></div>
+              <div style="height: 32px; background: #FB7185; border-radius: 6px;" title="Error Dark"></div>
+            </div>
+          </div>
+           <!-- Brutal -->
+          <div style="background: #0f0f12; border-radius: 12px; padding: 16px; border: 1px solid #27272a;">
+            <div style="font-size: 0.7rem; color: #71717a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.05em;">Neo-Brutalism</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px;">
+              <div style="height: 32px; background: #FFD027; border: 2px solid #000;" title="Primary"></div>
+              <div style="height: 32px; background: #78E9FF; border: 2px solid #000;" title="Success"></div>
+              <div style="height: 32px; background: #FF90E8; border: 2px solid #000;" title="Warning"></div>
+              <div style="height: 32px; background: #000000; border: 2px solid #000;" title="Error"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 6px;">
+              <div style="height: 32px; background: #FFD027; border: 2px solid #fff;" title="Primary Dark"></div>
+              <div style="height: 32px; background: #78E9FF; border: 2px solid #fff;" title="Success Dark"></div>
+              <div style="height: 32px; background: #FF90E8; border: 2px solid #fff;" title="Warning Dark"></div>
+              <div style="height: 32px; background: #FFFFFF; border: 2px solid #fff;" title="Error Dark"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <div class="comparison-section">
+      <h2 class="comparison-title">Complete Configuration Comparison</h2>
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th style="width: 200px;">Configuration</th>
+            <th>Apple Style</th>
+            <th>Google Material 3</th>
+            <th>Modern Western</th>
+            <th>Neo-Brutalism</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>navigation.styleType</td>
+            <td>sidebar</td>
+            <td class="val-highlight">mixed</td>
+            <td>sidebar</td>
+            <td>sidebar</td>
+          </tr>
+          <tr>
+            <td>navigation.split</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+          </tr>
+          <tr>
+            <td>navigation.accordion</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true</td>
+            <td class="val-true">true</td>
+          </tr>
+          <tr>
+            <td>sidebar.expandedWidth</td>
+            <td>260px</td>
+            <td>256px</td>
+            <td>240px</td>
+            <td>280px</td>
+          </tr>
+          <tr>
+            <td>sidebar.collapsed</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true (default)</td>
+            <td class="val-false">false</td>
+          </tr>
+          <tr>
+            <td>header.height</td>
+            <td>56px</td>
+            <td>64px</td>
+            <td>48px</td>
+            <td>64px</td>
+          </tr>
+          <tr>
+            <td>theme.semiDarkSidebar</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false (Mono)</td>
+          </tr>
+          <tr>
+            <td>theme.semiDarkHeader</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false (Mono)</td>
+          </tr>
+          <tr>
+            <td>footer.enable</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true (fixed)</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true (Sticky)</td>
+          </tr>
+          <tr>
+            <td>breadcrumb.enable</td>
+            <td class="val-true">true (no icon)</td>
+            <td class="val-true">true (with icon)</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true ( / )</td>
+          </tr>
+          <tr>
+            <td>widget.globalSearch</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true</td>
+            <td class="val-true">true</td>
+            <td class="val-true">true (Boxed)</td>
+          </tr>
+          <tr>
+            <td>widget.lockScreen</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+          </tr>
+          <tr>
+            <td>tabbar.persist</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+            <td class="val-true">true</td>
+            <td class="val-true">true</td>
+          </tr>
+          <tr>
+            <td>tabbar.showRefresh</td>
+            <td class="val-true">true</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+          </tr>
+          <tr>
+            <td>transition.name</td>
+            <td>fade</td>
+            <td>fade-slide</td>
+            <td>fade</td>
+            <td class="val-highlight">none</td>
+          </tr>
+          <tr>
+            <td>transition.progress</td>
+            <td class="val-true">true</td>
+            <td class="val-true">true</td>
+            <td class="val-false">false</td>
+            <td class="val-false">false</td>
+          </tr>
+          <tr>
+            <td>theme.radius</td>
+            <td>0.625 (10px)</td>
+            <td>0.75 (12px)</td>
+            <td>0.5 (8px)</td>
+            <td class="val-highlight">0px</td>
+          </tr>
+          <tr>
+            <td>colorPrimary</td>
+            <td style="color: #007AFF;">#007AFF</td>
+            <td style="color: #4285F4;">#4285F4</td>
+            <td style="color: #6366F1;">#6366F1</td>
+            <td style="color: #FFD027; background: #333; padding-left: 4px;">#FFD027</td>
+          </tr>
+          <tr>
+            <td>theme.radius</td>
+            <td>10px</td>
+            <td>12px</td>
+            <td>8px</td>
+            <td style="font-weight: bold;">0px</td>
+          </tr>
+          <tr>
+            <td>borders</td>
+            <td>1px subtle</td>
+            <td>none / 1px</td>
+            <td>1px subtle</td>
+            <td style="font-weight: bold; border-bottom: 2px solid #fff;">2px-3px solid</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+</html>
