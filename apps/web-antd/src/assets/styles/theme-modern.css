@@ -1,0 +1,60 @@
+/**
+ * Modern SaaS (Zinc/Linear) Overrides
+ * Active when <html class="theme-modern">
+ */
+
+/* ==============================================
+   Borders & Layout
+   ============================================== */
+
+/* Crisp Borders */
+html.theme-modern .layout-header,
+html.theme-modern aside.ant-layout-sider,
+html.theme-modern .vben-tabbar,
+html.theme-modern .ant-card,
+html.theme-modern .ant-modal-content,
+html.theme-modern .ant-popover-inner,
+html.theme-modern .ant-dropdown-menu {
+  border-width: 1px !important;
+  border-style: solid !important;
+  box-shadow: none !important; /* Flat aesthetic */
+}
+
+/* Light Mode Borders */
+html.theme-modern {
+  --modern-border: #e4e4e7; /* Zinc-200 */
+}
+html.theme-modern .layout-header,
+html.theme-modern aside.ant-layout-sider,
+html.theme-modern .vben-tabbar,
+html.theme-modern .ant-card {
+  border-color: var(--modern-border) !important;
+}
+
+/* Dark Mode Borders */
+html.theme-modern.dark {
+  --modern-border: #27272a; /* Zinc-800 */
+}
+
+/* ==============================================
+   Components
+   ============================================== */
+
+/* Buttons: Small radius, high precision */
+html.theme-modern .ant-btn {
+  border-radius: 6px !important;
+  font-weight: 500;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Inputs */
+html.theme-modern .ant-input,
+html.theme-modern .ant-input-affix-wrapper,
+html.theme-modern .ant-select-selector {
+  border-radius: 6px !important;
+}
+
+/* Cards: Flat with border, no shadow */
+html.theme-modern .ant-card {
+  border-radius: 8px !important;
+}

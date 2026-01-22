@@ -1,0 +1,116 @@
+/**
+ * Neo-Brutalism Theme Overrides
+ * Only active when <html class="theme-brutal">
+ */
+
+html.theme-brutal {
+  --brutal-border-color: #000;
+  --brutal-border-width: 2px;
+  --brutal-shadow-offset: 4px;
+}
+
+html.theme-brutal.dark {
+  --brutal-border-color: #fff;
+}
+
+/* ==============================================
+   Base Layout Elements
+   ============================================== */
+
+/* Sidebar */
+html.theme-brutal .layout-sidebar,
+html.theme-brutal aside.ant-layout-sider {
+  border-right: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+}
+
+/* Header */
+html.theme-brutal .layout-header,
+html.theme-brutal header.ant-layout-header {
+  border-bottom: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+}
+
+/* TabBar */
+html.theme-brutal .vben-tabbar {
+  border-bottom: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+}
+
+/* ==============================================
+   Ant Design Components Overrides
+   ============================================== */
+
+/* Buttons */
+html.theme-brutal .ant-btn {
+  border: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  border-radius: 0 !important;
+  box-shadow: var(--brutal-shadow-offset) var(--brutal-shadow-offset) 0 0 var(--brutal-border-color) !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  transition: all 0.1s !important;
+}
+
+html.theme-brutal .ant-btn:active,
+html.theme-brutal .ant-btn.ant-btn-clicked {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 2px 2px 0 0 var(--brutal-border-color) !important;
+}
+
+html.theme-brutal .ant-btn.ant-btn-text,
+html.theme-brutal .ant-btn.ant-btn-link {
+  box-shadow: none !important;
+  border: 1px solid transparent !important;
+}
+html.theme-brutal .ant-btn.ant-btn-text:hover {
+  background: var(--brutal-border-color);
+  color: var(--brutal-bg-color, #fff); 
+}
+
+/* Inputs */
+html.theme-brutal .ant-input,
+html.theme-brutal .ant-input-affix-wrapper,
+html.theme-brutal .ant-select-selector,
+html.theme-brutal .ant-picker {
+  border: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  border-radius: 0 !important;
+  box-shadow: 3px 3px 0 0 var(--brutal-border-color) !important;
+}
+
+/* Cards */
+html.theme-brutal .ant-card {
+  border: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  border-radius: 0 !important;
+  box-shadow: 5px 5px 0 0 var(--brutal-border-color) !important;
+}
+
+/* Modals */
+html.theme-brutal .ant-modal-content {
+  border: 3px solid var(--brutal-border-color) !important;
+  border-radius: 0 !important;
+  box-shadow: 8px 8px 0 0 var(--brutal-border-color) !important;
+}
+
+/* Dropdowns & Popovers */
+html.theme-brutal .ant-dropdown-menu,
+html.theme-brutal .ant-popover-inner,
+html.theme-brutal .ant-select-dropdown {
+  border: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 0 var(--brutal-border-color) !important;
+}
+
+/* Tags */
+html.theme-brutal .ant-tag {
+  border: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  border-radius: 0 !important;
+  font-weight: 700;
+}
+
+/* Tables */
+html.theme-brutal .ant-table {
+  border: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+}
+html.theme-brutal .ant-table-thead > tr > th {
+  border-bottom: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  background: transparent !important;
+  font-weight: 800;
+  text-transform: uppercase;
+}

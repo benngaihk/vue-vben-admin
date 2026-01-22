@@ -21,6 +21,7 @@ import { openWindow } from '@vben/utils';
 import { $t } from '#/locales';
 import { useAuthStore } from '#/store';
 import LoginForm from '#/views/_core/authentication/login.vue';
+import ThemeToggle from '#/components/theme-toggle.vue';
 
 const notifications = ref<NotificationItem[]>([
   {
@@ -171,6 +172,9 @@ watch(
 
 <template>
   <BasicLayout @clear-preferences-and-logout="handleLogout">
+    <template #header-right-1>
+      <ThemeToggle class="mr-1" />
+    </template>
     <template #user-dropdown>
       <UserDropdown
         :avatar

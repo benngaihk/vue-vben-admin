@@ -1,0 +1,55 @@
+/**
+ * Apple Style Global Overrides
+ * Active when <html class="theme-apple">
+ */
+
+/* Global Font Smoothing */
+html.theme-apple {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==============================================
+   Glassmorphism & Translucency
+   ============================================== */
+
+/* Header & Sidebar Blur */
+html.theme-apple .layout-header,
+html.theme-apple aside.ant-layout-sider {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+  border-right: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+html.theme-apple.dark .layout-header,
+html.theme-apple.dark aside.ant-layout-sider {
+  background-color: rgba(28, 28, 30, 0.8) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* ==============================================
+   Component Overrides
+   ============================================== */
+
+/* Buttons: Softer shadows and slightly different feel */
+html.theme-apple .ant-btn-primary {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Modals: iOS style */
+html.theme-apple .ant-modal-content {
+  border-radius: 12px !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Cards: Subtle border instead of shadow depth */
+html.theme-apple .ant-card {
+  border: 1px solid rgba(0,0,0,0.06) !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+}
+html.theme-apple.dark .ant-card {
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  background: #1c1c1e !important;
+}

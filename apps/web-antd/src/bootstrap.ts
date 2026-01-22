@@ -6,6 +6,10 @@ import { preferences } from '@vben/preferences';
 import { initStores } from '@vben/stores';
 import '@vben/styles';
 import '@vben/styles/antd';
+import '#/assets/styles/theme-apple.css';
+import '#/assets/styles/theme-google.css';
+import '#/assets/styles/theme-modern.css';
+import '#/assets/styles/theme-brutal.css';
 
 import { useTitle } from '@vueuse/core';
 

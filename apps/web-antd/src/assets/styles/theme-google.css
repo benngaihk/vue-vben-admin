@@ -1,0 +1,58 @@
+/**
+ * Google Material 3 Overrides
+ * Active when <html class="theme-google">
+ */
+
+/* ==============================================
+   Shape System
+   ============================================== */
+
+/* Buttons: Pill Shape (Capsule) */
+html.theme-google .ant-btn {
+  border-radius: 999px !important;
+  text-transform: none;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+/* Inputs: Filled style simulation (top rounded only if supported, but here slightly rounded) 
+   Actually M3 inputs are often filled. Ant Design is outline by default. 
+   We will keep outline but make it chunky with 4px radius, distinct from buttons.
+*/
+html.theme-google .ant-input,
+html.theme-google .ant-input-affix-wrapper,
+html.theme-google .ant-select-selector,
+html.theme-google .ant-picker {
+  border-radius: 4px !important; 
+}
+
+/* Cards: Medium rounded */
+html.theme-google .ant-card {
+  border-radius: 12px !important;
+  border: none !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+/* ==============================================
+   Colors & States
+   ============================================== */
+
+/* Primary Button: No shadow, flat color */
+html.theme-google .ant-btn-primary {
+  box-shadow: none !important;
+}
+html.theme-google .ant-btn-primary:active {
+  box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.2) !important; /* Ripple simul */
+}
+
+/* Drawer & Modal */
+html.theme-google .ant-drawer-content,
+html.theme-google .ant-modal-content {
+  border-radius: 16px !important;
+}
+
+/* Sidebar */
+html.theme-google aside.ant-layout-sider {
+  border-right: none !important;
+  /* background-color: #f0f2f5 !important; M3 often uses surface colors */
+}
