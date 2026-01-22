@@ -17,16 +17,50 @@ html.theme-brutal.dark {
    Base Layout Elements
    ============================================== */
 
-/* Sidebar */
+/* Sidebar: PINK Background + Border */
 html.theme-brutal .layout-sidebar,
 html.theme-brutal aside.ant-layout-sider {
-  border-right: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  background-color: #ff90e8 !important; /* Strong Pink */
+  border-right: 3px solid #000 !important;
 }
 
-/* Header */
+/* NUCLEAR FIX: Force all children of sidebar to be transparent so pink shows through */
+html.theme-brutal aside.ant-layout-sider *,
+html.theme-brutal aside.ant-layout-sider .ant-layout-sider-children,
+html.theme-brutal aside.ant-layout-sider .ant-menu,
+html.theme-brutal aside.ant-layout-sider .ant-menu-submenu,
+html.theme-brutal aside.ant-layout-sider div {
+  background-color: transparent !important;
+}
+
+/* Sidebar Menu Items: Reset background per item */
+html.theme-brutal aside.ant-layout-sider .ant-menu-item {
+   background-color: transparent !important;
+}
+html.theme-brutal aside.ant-layout-sider .ant-menu-item-selected {
+  background-color: #00f0ff !important; /* Cyan Contrast */
+  color: #000 !important;
+  border: 2px solid #000 !important;
+  box-shadow: 2px 2px 0 0 #000 !important;
+  transform: translate(-1px, -1px);
+  margin-right: 8px; /* Prevent border overlap */
+}
+
+/* Header: Yellow or White with strong border */
 html.theme-brutal .layout-header,
 html.theme-brutal header.ant-layout-header {
-  border-bottom: var(--brutal-border-width) solid var(--brutal-border-color) !important;
+  background-color: #fff !important;
+  border-bottom: 3px solid #000 !important;
+}
+
+/* Main Content Area Styling */
+html.theme-brutal .ant-layout-content {
+  background-color: #e0ccff !important; /* Lavender/Purple BG from image */
+  padding: 16px !important;
+}
+/* Ensure the inner container of content also reflects or lets through the color */
+html.theme-brutal .vben-layout-content {
+  background-color: #e0ccff !important;
 }
 
 /* TabBar */

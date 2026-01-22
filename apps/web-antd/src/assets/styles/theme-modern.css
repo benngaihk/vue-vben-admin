@@ -1,60 +1,131 @@
 /**
- * Modern SaaS (Zinc/Linear) Overrides
+ * Modern SaaS (Zinc / Linear style) Overrides
  * Active when <html class="theme-modern">
+ * Design Philosophy: High Contrast, Technical, Precision, No Shadows
  */
 
-/* ==============================================
-   Borders & Layout
-   ============================================== */
-
-/* Crisp Borders */
-html.theme-modern .layout-header,
-html.theme-modern aside.ant-layout-sider,
-html.theme-modern .vben-tabbar,
-html.theme-modern .ant-card,
-html.theme-modern .ant-modal-content,
-html.theme-modern .ant-popover-inner,
-html.theme-modern .ant-dropdown-menu {
-  border-width: 1px !important;
-  border-style: solid !important;
-  box-shadow: none !important; /* Flat aesthetic */
-}
-
-/* Light Mode Borders */
 html.theme-modern {
+  --modern-bg: #ffffff;
   --modern-border: #e4e4e7; /* Zinc-200 */
-}
-html.theme-modern .layout-header,
-html.theme-modern aside.ant-layout-sider,
-html.theme-modern .vben-tabbar,
-html.theme-modern .ant-card {
-  border-color: var(--modern-border) !important;
+  --modern-border-strong: #d4d4d8; /* Zinc-300 */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Dark Mode Borders */
 html.theme-modern.dark {
+  --modern-bg: #09090b; /* Zinc-950 */
   --modern-border: #27272a; /* Zinc-800 */
+  --modern-border-strong: #3f3f46; /* Zinc-700 */
 }
 
 /* ==============================================
-   Components
+   Layout: Dark Sidebar, Light Content
    ============================================== */
 
-/* Buttons: Small radius, high precision */
-html.theme-modern .ant-btn {
-  border-radius: 6px !important;
-  font-weight: 500;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+html.theme-modern body,
+html.theme-modern .ant-layout {
+  background-color: #f4f4f5 !important; /* Zinc-100 */
 }
 
-/* Inputs */
+/* Header: White with bottom border */
+html.theme-modern .layout-header {
+  border-bottom: 1px solid var(--modern-border) !important;
+  background-color: #ffffff !important;
+  box-shadow: none !important;
+}
+
+/* Sidebar: DARK MODE (Zinc-900) */
+html.theme-modern aside.ant-layout-sider {
+  background-color: #18181b !important;
+  border-right: 1px solid #27272a !important; /* Zinc-800 border */
+  color: #a1a1aa !important; /* Zinc-400 text */
+}
+
+html.theme-modern aside.ant-layout-sider .ant-menu {
+  background: transparent !important;
+  color: #a1a1aa !important;
+}
+
+/* Menu Item Hover */
+html.theme-modern aside.ant-layout-sider .ant-menu-item:hover {
+  color: #ffffff !important;
+  background-color: #27272a !important; /* Zinc-800 */
+}
+
+/* Menu Item Selected */
+html.theme-modern aside.ant-layout-sider .ant-menu-item-selected {
+  background-color: #fafafa !important; /* White accent for contrast or inverted logic? Design shows Blue usually, but lets match 'Dark Sidebar' typical look */
+  background-color: #3f3f46 !important; /* Zinc-700 */
+  color: #ffffff !important;
+  border-radius: 6px;
+}
+
+/* Logo Area in Sidebar */
+/* Assuming there is a logo container, force it dark */
+html.theme-modern .layout-sider-logo {
+  border-bottom: 1px solid #27272a !important;
+}
+
+/* TabBar */
+html.theme-modern .vben-tabbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid var(--modern-border) !important;
+}
+
+/* ==============================================
+   Components: Technical Feel
+   ============================================== */
+
+/* Buttons: Small radius, no shadow, crisp border */
+html.theme-modern .ant-btn {
+  border-radius: 4px !important; /* Tighter radius */
+  box-shadow: none !important;
+  border: 1px solid var(--modern-border-strong) !important;
+  font-weight: 500;
+  font-size: 13px; /* Slightly smaller, more technical */
+}
+
+html.theme-modern .ant-btn-primary {
+  background-color: #18181b !important; /* Zinc-900 (Black) */
+  border-color: #18181b !important;
+  color: white !important;
+}
+html.theme-modern .ant-btn-primary:hover {
+  background-color: #27272a !important; /* Zinc-800 */
+}
+
+/* Inputs: Minimalist */
 html.theme-modern .ant-input,
 html.theme-modern .ant-input-affix-wrapper,
 html.theme-modern .ant-select-selector {
-  border-radius: 6px !important;
+  border-radius: 4px !important;
+  border-color: var(--modern-border) !important;
+  box-shadow: none !important;
+}
+html.theme-modern .ant-input:focus,
+html.theme-modern .ant-input-affix-wrapper:focus-within {
+  border-color: #52525b !important; /* Zinc-600 */
+  box-shadow: 0 0 0 2px rgba(63, 63, 70, 0.1) !important;
 }
 
-/* Cards: Flat with border, no shadow */
+/* Cards: Outline only, no shadow */
 html.theme-modern .ant-card {
-  border-radius: 8px !important;
+  border: 1px solid var(--modern-border) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Badges/Tags: Sharp */
+html.theme-modern .ant-tag {
+  border-radius: 2px !important;
+  border: 1px solid var(--modern-border) !important;
+  background: transparent !important;
+  font-weight: 500;
+}
+
+/* Modals */
+html.theme-modern .ant-modal-content {
+  border: 1px solid var(--modern-border-strong) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important; /* Minimal shadow */
+  border-radius: 6px !important;
 }

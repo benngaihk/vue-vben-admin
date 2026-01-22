@@ -3,53 +3,236 @@
  * Active when <html class="theme-apple">
  */
 
-/* Global Font Smoothing */
+/* ==============================================
+   Typography & Base
+   ============================================== */
 html.theme-apple {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+/* 引入 macOS 风格的桌面壁纸感背景，突出毛玻璃效果 */
+html.theme-apple body,
+html.theme-apple #app,
+html.theme-apple .ant-layout {
+  background: radial-gradient(circle at 0% 0%, #eef2f3 0%, #d9e9ff 100%) !important;
+  background-attachment: fixed !important;
+}
+
+html.theme-apple.dark body,
+html.theme-apple.dark #app,
+html.theme-apple.dark .ant-layout {
+  background: radial-gradient(circle at 0% 0%, #2c3e50 0%, #000000 100%) !important;
 }
 
 /* ==============================================
-   Glassmorphism & Translucency
+   Glassmorphism (毛玻璃) System
    ============================================== */
 
-/* Header & Sidebar Blur */
-html.theme-apple .layout-header,
-html.theme-apple aside.ant-layout-sider {
-  background-color: rgba(255, 255, 255, 0.8) !important;
-  backdrop-filter: saturate(180%) blur(20px);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
-  border-right: 1px solid rgba(0, 0, 0, 0.05) !important;
+/* ==============================================
+   Layout Colors (Based on User Screenshot)
+   ============================================== */
+
+/* ==============================================
+   Layout Colors (Based on User Screenshot)
+   ============================================== */
+
+/* ==============================================
+   Layout Colors (Based on User Screenshot)
+   ============================================== */
+
+html.theme-apple {
+  --vben-layout-bg: #ffffff !important; /* The canvas behind everything */
+  --vben-content-bg: #f9f9f9 !important; /* The content card background */
+  
+  /* CRITICAL: Tailwind 使用的 sidebar 背景色变量 (HSL 格式) */
+  /* #F5F5F7 = HSL(240, 6%, 97%) */
+  --header: 240 6% 97% !important;
+  --sidebar: 240 6% 97% !important;
+  --layout: 0 0% 100% !important; /* #ffffff */
+  --content: 0 0% 98% !important; /* #f9f9f9 */
+  
+  /* CRITICAL: Ensure this is white so any exposed background is white */
+  --background-deep: #ffffff !important; 
+  
+  --ant-layout-header-bg: #F5F5F7 !important;
+  --ant-layout-sider-bg: #F5F5F7 !important;
+  --ant-layout-body-bg: #ffffff !important;
 }
 
-html.theme-apple.dark .layout-header,
-html.theme-apple.dark aside.ant-layout-sider {
-  background-color: rgba(28, 28, 30, 0.8) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-  border-right: 1px solid rgba(255, 255, 255, 0.05) !important;
+/* 1. Sidebar & Header */
+html.theme-apple .vben-layout-header,
+html.theme-apple .vben-layout-sidebar,
+html.theme-apple .ant-layout-header,
+html.theme-apple .ant-layout-sider {
+  background-color: #f5f5f7 !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  border-right: 1px solid #e5e5e5 !important;
+}
+
+/* 2. Right Side Container: Pure White Canvas */
+html.theme-apple .vben-layout-content,
+html.theme-apple .ant-layout-content,
+html.theme-apple .ant-layout,
+html.theme-apple main {
+  background-color: #ffffff !important;
+}
+
+/* 3. Page Content Area: The "Floating Gray Card" */
+/* We target the wrapper that Vben puts around the router view */
+
+/* First, ensure the outer wrapper allows for the margin */
+html.theme-apple .vben-layout-content {
+  display: flex !important;
+  flex-direction: column !important;
+  background-color: #ffffff !important;
+}
+
+/* Then target the inner scroll container or content box */
+html.theme-apple .vben-layout-content > div:not(.vben-layout-footer),
+html.theme-apple .bg-card,
+html.theme-apple .vben-content {
+  /* This creates the floating effect inside the white canvas */
+  margin: 16px !important; 
+  
+  /* The visual style of the card */
+  background-color: #f9f9f9 !important; /* Proper light gray */
+  border: 1px solid #e5e5e5 !important;
+  border-radius: 12px !important;
+  
+  /* Reset shadows */
+  box-shadow: none !important;
+}
+
+/* TabBar Fix */
+html.theme-apple .vben-tabs,
+html.theme-apple .vben-tabbar {
+  background-color: #f5f5f7 !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+}
+html.theme-apple .vben-tabs-tab-active,
+html.theme-apple .vben-tabbar-tab-active {
+  background-color: #ffffff !important; 
+}/* Active tab looks like the page */
+
+/* ==============================================
+   Menu & Sidebar Interactions (THE VBEN VARIABLE FIX)
+   ============================================== */
+
+/* 1. OVERRIDE VBEN COMPONENT VARIABLES */
+html.theme-apple .vben-menu,
+html.theme-apple .vben-layout-sidebar {
+  /* BACKGROUND: Override the white background behind items */
+  --menu-background-color: transparent !important;
+  
+  /* RADIUS: The magic variable from your screenshot */
+  --menu-item-radius: 8px !important;
+  
+  /* SPACING: Make it not touch the edges */
+  --menu-item-margin-x: 8px !important; 
+  --menu-item-padding-x: 12px !important;
+  
+  /* COLORS: Override the internal logic */
+  --menu-item-active-bg: #007aff !important;
+  --menu-item-active-color: #ffffff !important;
+  --menu-item-hover-bg: rgba(0,0,0,0.08) !important; /* Slightly darker on hover */
+}
+
+/* 2. FORCE STYLES ON THE VBEN CLASS STRUCTURE */
+
+/* The Item Container (Leaf & Parent) - DEFAULT STATE = GRAY */
+html.theme-apple .vben-menu-item,
+html.theme-apple .vben-sub-menu > div:first-child, /* The title div inside the li */
+html.theme-apple .ant-menu-item, 
+html.theme-apple .ant-menu-submenu-title {
+  /* Default Gray Background for unselected items */
+  background-color: rgba(0, 0, 0, 0.05) !important; 
+  color: #333 !important;
+  
+  margin-inline: 8px !important;
+  margin-bottom: 4px !important; /* Add spacing between the gray blocks */
+  width: auto !important;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+/* The Selected State (Leaf) - OVERRIDE GRAY WITH BLUE */
+html.theme-apple .vben-menu-item.is-active,
+html.theme-apple .vben-menu-item-active,
+html.theme-apple .ant-menu-item-selected {
+  background-color: #007aff !important;
+  color: #ffffff !important;
+}
+
+/* The Selected Text (Leaf) */
+html.theme-apple .vben-menu-item.is-active *,
+html.theme-apple .vben-menu-item-active *,
+html.theme-apple .ant-menu-item-selected * {
+  color: #ffffff !important;
+}
+
+/* 3. SUB-MENU PARENT SPECIFIC FIX */
+
+/* Hover on Parent/Item */
+html.theme-apple .vben-menu-item:not(.is-active):hover,
+html.theme-apple .vben-sub-menu > div:first-child:hover,
+html.theme-apple .ant-menu-item:hover:not(.ant-menu-item-selected) {
+  background-color: rgba(0,0,0,0.08) !important; /* Darker gray on hover */
+  color: #000 !important;
+}
+
+/* Active/Open Parent (Folder) */
+/* When folder is open, maybe keep it gray or make it transparent? 
+   screenshot suggests items are blocks. let's keep them gray blocks. */
+html.theme-apple .vben-sub-menu.is-active > div:first-child,
+html.theme-apple .vben-sub-menu.is-opened > div:first-child {
+  font-weight: 600 !important;
+  color: #007aff !important; 
+  /* background-color: rgba(0,0,0,0.05) !important;  Keep the gray block */
+}
+
+/* 4. RESET ANT DESIGN CONFLICTS */
+html.theme-apple .ant-menu-item::after { 
+  display: none !important; 
+}
+
+/* Logo Spacing */
+html.theme-apple .layout-sider-logo {
+  border-bottom: 1px solid rgba(0,0,0,0.06) !important;
+  margin-bottom: 12px !important;
 }
 
 /* ==============================================
    Component Overrides
    ============================================== */
 
-/* Buttons: Softer shadows and slightly different feel */
-html.theme-apple .ant-btn-primary {
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1) !important;
-}
-
-/* Modals: iOS style */
-html.theme-apple .ant-modal-content {
-  border-radius: 12px !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
-}
-
-/* Cards: Subtle border instead of shadow depth */
+/* Cards: 更加通透 */
 html.theme-apple .ant-card {
-  border: 1px solid rgba(0,0,0,0.06) !important;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  background-color: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.05) !important;
 }
+
 html.theme-apple.dark .ant-card {
-  border: 1px solid rgba(255,255,255,0.06) !important;
-  background: #1c1c1e !important;
+  background-color: rgba(28, 28, 30, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Modals: iOS 弹窗风格 */
+html.theme-apple .ant-modal-content {
+  border-radius: 18px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+  overflow: hidden;
+}
+
+/* Buttons: 柔和的阴影和圆角 */
+html.theme-apple .ant-btn {
+  border-radius: 8px !important;
+  font-weight: 500;
+}
+html.theme-apple .ant-btn-primary {
+  box-shadow: 0 4px 10px rgba(0, 122, 255, 0.25) !important;
 }

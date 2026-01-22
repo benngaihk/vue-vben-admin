@@ -8,32 +8,37 @@ export const themePresets = {
     label: 'Apple Style',
     icon: 'ph:apple-logo',
     config: {
+      app: {
+        layout: 'header-sidebar-nav'
+      },
       navigation: {
-        styleType: 'sidebar',
         split: false,
         accordion: true,
       },
       sidebar: {
-        width: 260,
+        width: 250, // Standard macOS sidebar width
         collapsed: false,
-        expandOnHover: false,
+        expandOnHover: true,
       },
       header: {
-        height: 56,
+        height: 52, // Slightly shorter, more compact like native toolbar
       },
       theme: {
-        radius: '0.625', // 10px
+        radius: '0.75', // 12px
         semiDarkSidebar: false,
         semiDarkHeader: false,
-        colorPrimary: '#007AFF',
+        colorPrimary: '#007AFF', // iOS Blue
       },
       footer: {
         enable: false,
       },
       breadcrumb: {
-        enable: true,
+        enable: false,
         showIcon: false,
       },
+      tabbar: {
+        enable: false,
+      }
     }
   },
   google: {
@@ -41,32 +46,27 @@ export const themePresets = {
     icon: 'ph:google-logo',
     config: {
       navigation: {
-        styleType: 'mixed',
-        split: true,
-        accordion: false,
+        styleType: 'sidebar', // M3 usually uses a sidebar drawer
+        split: false,
       },
       sidebar: {
-        width: 256,
+        width: 300, // M3 Navigation Drawer is wider (standard 360dp on tablet, but 300 is good for web)
         collapsed: false,
         expandOnHover: true,
       },
       header: {
-        height: 64,
+        height: 64, // Standard M3 Top App Bar height
       },
       theme: {
-        radius: '0.75', // 12px
-        semiDarkSidebar: false,
-        semiDarkHeader: true,
-        colorPrimary: '#4285F4',
+        radius: '1.0', // 16px (M3 Large rounded)
+        semiDarkSidebar: false, // CSS handles the surface color, avoid JS forcing contrast
+        semiDarkHeader: true,   // Keep this to ensure text contrast logic works for the dark header
+        colorPrimary: '#0b57d0', // M3 Blue
       },
       footer: {
         enable: true,
         fixed: true,
-      },
-      breadcrumb: {
-        enable: true,
-        showIcon: true,
-      },
+      }
     }
   },
   modern: {
@@ -79,24 +79,28 @@ export const themePresets = {
       },
       sidebar: {
         width: 240,
-        collapsed: true, // Default collapsed
+        collapsed: true, // Default collapsed for "Focus" mode
         expandOnHover: true,
       },
       header: {
-        height: 48,
+        height: 48, // Dense
       },
       theme: {
-        radius: '0.5', // 8px
-        semiDarkSidebar: true,
+        radius: '0.375', // 6px
+        semiDarkSidebar: true, // Crucial: This triggers the dark sidebar variables in Vben
         semiDarkHeader: false,
-        colorPrimary: '#6366F1',
+        colorPrimary: '#18181b', // Zinc-900 (Black) - Matches CSS
+        colorSuccess: '#10b981', // Emerald
+        colorWarning: '#f59e0b', // Amber
+        colorError: '#ef4444',   // Red
       },
       tabbar: {
         persist: true,
+        styleType: 'brisk', // Minimalist tabs
       },
       transition: {
         enable: true,
-        name: 'fade',
+        name: 'fade-slide', // Technical transition
       }
     }
   },
@@ -112,19 +116,20 @@ export const themePresets = {
         width: 280,
       },
       header: {
-        height: 64,
+        height: 72, // Chunky header
       },
       theme: {
-        radius: '0', // 0px
+        radius: '0', // 0px Hard edges
         semiDarkSidebar: false,
         semiDarkHeader: false,
-        colorPrimary: '#FFD027',
+        colorPrimary: '#00f0ff', // Cyan (High Contrast) - Matches CSS selection
       },
       tabbar: {
         showRefresh: false,
+        styleType: 'chrome', // Blocky tabs
       },
       transition: {
-        enable: false, // immediate
+        enable: false, // NO transition is part of the brutalist aesthetic
       }
     }
   }

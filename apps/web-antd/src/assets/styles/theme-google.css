@@ -1,58 +1,111 @@
 /**
- * Google Material 3 Overrides
+ * Google Material 3 (M3) Overrides
  * Active when <html class="theme-google">
+ * Design Philosophy: Surface Colors, No Borders, Pill Shapes
  */
+
+/* ==============================================
+   Surface System (Colors)
+   ============================================== */
+
+html.theme-google {
+  /* M3 uses surface tones instead of pure white/gray borders */
+  --m3-surface: #fdfbff;
+  --m3-surface-container: #f0f4f8; /* Light blueish tint for sidebar/bg */
+  --m3-primary-container: #d3e3fd;
+}
+
+html.theme-google.dark {
+  --m3-surface: #141218;
+  --m3-surface-container: #211f26;
+}
+
+/* Root Layout */
+html.theme-google .ant-layout,
+html.theme-google body {
+  background-color: #f0f4f9 !important; /* M3 Light Surface */
+}
+
+/* Header: DARK (M3 Surface Inverse) */
+html.theme-google .layout-header,
+html.theme-google header.ant-layout-header,
+html.theme-google .vben-layout-header {
+  background-color: #1f1f1f !important; /* Dark Grey */
+  color: #e3e3e3 !important;
+  border-bottom: none !important;
+  --header-bg-color: #1f1f1f !important; /* Override Vben variable if exists */
+}
+/* Force header icons/text to be light */
+html.theme-google .layout-header *,
+html.theme-google header.ant-layout-header *,
+html.theme-google .vben-layout-header * {
+  color: #e3e3e3 !important;
+}
+
+/* Sidebar: Transparent/Blend */
+html.theme-google aside.ant-layout-sider {
+  background-color: #f0f4f9 !important; /* Match body */
+  border: none !important;
+}
+
+/* Sidebar Menu Selected: Pill Shape with M3 Blue */
+html.theme-google .ant-menu .ant-menu-item-selected {
+  background-color: #c2e7ff !important; /* M3 active container */
+  color: #001d35 !important; /* on-surface text */
+  font-weight: 700 !important;
+}
+
+/* Sidebar Toggle / Triggers */
+html.theme-google .trigger {
+  color: #444746 !important;
+}
 
 /* ==============================================
    Shape System
    ============================================== */
 
-/* Buttons: Pill Shape (Capsule) */
+/* Buttons: Fully rounded pills */
 html.theme-google .ant-btn {
   border-radius: 999px !important;
   text-transform: none;
   font-weight: 500;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
+  box-shadow: none !important; /* Flat design */
+}
+html.theme-google .ant-btn-primary {
+  background-color: #0b57d0; /* Google Blue */
 }
 
-/* Inputs: Filled style simulation (top rounded only if supported, but here slightly rounded) 
-   Actually M3 inputs are often filled. Ant Design is outline by default. 
-   We will keep outline but make it chunky with 4px radius, distinct from buttons.
-*/
+/* Inputs: Distinct chunky field */
 html.theme-google .ant-input,
 html.theme-google .ant-input-affix-wrapper,
 html.theme-google .ant-select-selector,
 html.theme-google .ant-picker {
-  border-radius: 4px !important; 
-}
-
-/* Cards: Medium rounded */
-html.theme-google .ant-card {
-  border-radius: 12px !important;
+  border-radius: 4px 4px 0 0 !important; /* Simulate filled input shape */
+  background-color: #e7ebf0 !important; /* Filled style */
   border: none !important;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !important;
-}
-
-/* ==============================================
-   Colors & States
-   ============================================== */
-
-/* Primary Button: No shadow, flat color */
-html.theme-google .ant-btn-primary {
+  border-bottom: 2px solid #72777f !important;
   box-shadow: none !important;
 }
-html.theme-google .ant-btn-primary:active {
-  box-shadow: 0 0 0 4px rgba(66, 133, 244, 0.2) !important; /* Ripple simul */
+html.theme-google .ant-input:focus,
+html.theme-google .ant-input-affix-wrapper:focus-within,
+html.theme-google .ant-select-selector:focus {
+  background-color: #e7ebf0 !important;
+  border-bottom-color: #0b57d0 !important;
 }
 
-/* Drawer & Modal */
+/* Cards: Floating Elevated Surfaces */
+html.theme-google .ant-card {
+  border-radius: 20px !important;
+  border: none !important;
+  background-color: var(--m3-surface) !important;
+  box-shadow: 0 2px 6px 2px rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.1) !important;
+  margin-bottom: 16px; /* Spacing */
+}
+
+/* Modal & Drawer */
 html.theme-google .ant-drawer-content,
 html.theme-google .ant-modal-content {
-  border-radius: 16px !important;
-}
-
-/* Sidebar */
-html.theme-google aside.ant-layout-sider {
-  border-right: none !important;
-  /* background-color: #f0f2f5 !important; M3 often uses surface colors */
+  border-radius: 28px !important; /* Super rounded M3 dialogs */
+  background-color: var(--m3-surface) !important;
 }
